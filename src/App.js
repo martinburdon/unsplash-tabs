@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Unsplash, { toJson } from 'unsplash-js';
 import styled from 'styled-components';
+import QuerySelector from './components/QuerySelector.jsx';
 import Author from './components/Author.jsx';
 import { getFakeData } from './helpers.js';
 
@@ -37,16 +38,25 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: false,
+      query: '',
       imageData: false
     };
     this.getImage = this.getImage.bind(this);
+    this.onQueryChange = this.onQueryChange.bind(this);
   }
 
   componentDidMount() {
-    // this.getImage();
-
-    this.setState({ imageData: getFakeData() })
+    const existingQuery = localStorage.getItem('unsplash-query');
+    if (existingQuery) {
+      this.setState({
+        query: existingQuery
+      }, () => {
+        this.getImage();
+      })
+    } else {
+      // this.getImage();
+      this.setState({ imageData: getFakeData() })
+    }
   }
 
   getImage() {
@@ -68,6 +78,12 @@ class App extends Component {
     })
   }
 
+  onQueryChange(query) {
+    console.log(':: e ', query);
+    this.setState({ query });
+    localStorage.setItem('unsplash-query', query);
+  }
+
   render() {
     const { imageData } = this.state;
     if (!imageData) return 'Loading...';
@@ -76,6 +92,10 @@ class App extends Component {
 
     return (
       <AppContainer>
+        <QuerySelector
+          onChange={this.onQueryChange}
+          value={this.state.query}
+        />
         <Button onClick={this.getImage}>New Image</Button>
         <Author {...user} />
         <Image src={imageData.urls.regular} alt={imageData.alt_description} />
