@@ -30,20 +30,11 @@ const Image = styled.img`
   width: 100%;
 `;
 
-const Button = styled.button`
-  position: absolute;
-`;
-
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: '',
-      imageData: false
-    };
-    this.getImage = this.getImage.bind(this);
-    this.onQueryChange = this.onQueryChange.bind(this);
-  }
+  state = {
+    query: '',
+    imageData: false
+  };
 
   componentDidMount() {
     const existingQuery = localStorage.getItem('unsplash-query');
@@ -59,7 +50,7 @@ class App extends Component {
     }
   }
 
-  getImage() {
+  getImage = () => {
     const unsplash = new Unsplash({
       applicationId: "6065459990db35f7155affdc49fcbe8400bf62e55b8d1e1fc0eac0dc6dab5368",
       secret: "472798bcebb71460c75a0793eb30c3bd837e24f31f469b812c6e69253825026d"
@@ -74,11 +65,15 @@ class App extends Component {
     .then(toJson)
     .then(imageData => {
       console.log(':: imageData ', imageData);
-      this.setState({ imageData })
+      if (!imageData.errors) {
+        this.setState({ imageData })
+      } else {
+        this.setState({ imageData: getFakeData() })
+      }
     })
   }
 
-  onQueryChange(query) {
+  onQueryChange = (query) => {
     console.log(':: e ', query);
     this.setState({ query });
     localStorage.setItem('unsplash-query', query);
@@ -96,9 +91,11 @@ class App extends Component {
           onChange={this.onQueryChange}
           value={this.state.query}
         />
-        <Button onClick={this.getImage}>New Image</Button>
         <Author {...user} />
-        <Image src={imageData.urls.regular} alt={imageData.alt_description} />
+        <Image
+          src={imageData.urls.regular}
+          alt={imageData.alt_description}
+        />
       </AppContainer>
     );
   }
