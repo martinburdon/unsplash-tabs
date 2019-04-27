@@ -2,8 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Logo = styled.svg`
-  fill: #D8DEE9;
+  fill: #4C566A;
   height: 2rem;
+  left: 50%;
+  margin-left: -1rem;
+  position: absolute;
   width: 2rem;
 `;
 

@@ -34,7 +34,7 @@ class App extends Component {
       })
     } else {
       // this.getImage();
-      this.setState({ imageData: getFakeData() })
+      this.setState({ imageData: getFakeData() }) // Temp for testing
     }
   }
 

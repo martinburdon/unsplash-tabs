@@ -31,16 +31,20 @@ const InputContainer = styled.div`
 `;
 
 const Input = styled.input`
-  background: #D8DEE9;
+  background: #434C5E;
   border: none;
   border-radius: 0.4rem;
-  color: #2E3440;
+  color: #D8DEE9;
   font-size: 1.5rem;
   line-height: 1.1;
   padding: 0.8rem;
 
   &:focus {
     outline: none;
+  }
+
+  &::placeholder {
+    color: #79849a;
   }
 `;
 
