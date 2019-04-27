@@ -3,16 +3,12 @@ import styled from 'styled-components';
 
 const Author = styled.div`
   align-items: stretch;
-  bottom: 1rem;
   display: flex;
   font-size: 1.3rem;
-  left: 1rem;
-  padding: 1rem;
-  position: absolute;
-  z-index: 1;
 `;
 
 const Avatar = styled.img`
+  border-radius: 0.4rem;
   display: block;
   height: 3.2rem;
   margin-right: 1rem;
@@ -20,7 +16,7 @@ const Avatar = styled.img`
 `;
 
 const Name = styled.span`
-  color: white;
+  color: #D8DEE9;
   display: block;
   margin-bottom: 0.2rem;
 `;
@@ -30,7 +26,7 @@ const Link = styled.a`
 `;
 
 const Instagram = styled.span`
-  color: white;
+  color: #D8DEE9;
 `;
 
 const InfoContainer = styled.div`

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Unsplash, { toJson } from 'unsplash-js';
 import styled from 'styled-components';
-import unsplashLogo from './assets/unsplash-logo.png';
-import QuerySelector from './components/QuerySelector.jsx';
-import Author from './components/Author.jsx';
 import { getFakeData } from './helpers.js';
+import Footer from './components/Footer.jsx';
 
 const AppContainer = styled.div`
   align-items: center;
@@ -12,44 +10,12 @@ const AppContainer = styled.div`
   height: 100vh;
   justify-content: center;
   position: relative;
-
-  &::after {
-    background: linear-gradient(to top, rgba(0,0,0,0.80) 0%,rgba(0,0,0,0) 100%);
-    content: '';
-    width: 100vw;
-    height: 10rem;
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
 `;
 
 const Image = styled.img`
   height: 100%;
   object-fit: cover;
   width: 100%;
-`;
-
-const UnsplashContainer = styled.div`
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  margin-left: -8rem;
-  z-index: 1;
-  width: 16rem;
-
-  p {
-    color: #fff;
-    text-align: center;
-    margin-bottom: 0.4rem;
-  }
-
-  img {
-    height: auto;
-    max-width: 100%;
-    display: block;
-  }
 `;
 
 class App extends Component {
@@ -108,15 +74,11 @@ class App extends Component {
 
     return (
       <AppContainer>
-        <QuerySelector
-          onChange={this.onQueryChange}
-          value={this.state.query}
+        <Footer
+          onQueryChange={this.onQueryChange}
+          query={this.state.query}
+          user={user}
         />
-        <Author {...user} />
-        <UnsplashContainer>
-          <img src={unsplashLogo} alt="Logo" />;
-          <p>Image available from Unsplash</p>
-        </UnsplashContainer>
         <Image
           src={imageData.urls.regular}
           alt={imageData.alt_description}

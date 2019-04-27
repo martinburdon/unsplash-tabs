@@ -1,38 +1,40 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import SettingsIcon from './SettingsIcon.jsx';
 
 const SettingsContainer = styled.div`
-  bottom: 1rem;
-  position: absolute;
-  right: 1rem;
-  z-index: 1;
+  position: relative;
 `;
 
 const InputToggle = styled.button`
-  background: #1b1b1b;
+  background: none;
   border: none;
-  color: #fff;
   cursor: pointer;
-  font-size: 1rem;
-  letter-spacing: 0.1rem;
-  padding: 1rem;
-  text-transform: uppercase;
+  padding: 0;
 
   &:focus {
     outline: none;
+  }
+
+  svg {
+    display: block;
+    fill: #D8DEE9;
+    height: 3rem;
+    width: 3rem;
   }
 `;
 
 const InputContainer = styled.div`
   position: absolute;
-  right: 9rem;
+  right: 4rem;
   bottom: 0;
 `;
 
 const Input = styled.input`
-  background: #1b1b1b;
+  background: #D8DEE9;
   border: none;
-  color: #fff;
+  border-radius: 0.4rem;
+  color: #2E3440;
   font-size: 1.5rem;
   line-height: 1.1;
   padding: 0.8rem;
@@ -56,7 +58,9 @@ class QuerySelector extends Component {
   render() {
     return (
       <SettingsContainer>
-        <InputToggle onClick={this.toggleSettings}>Settings</InputToggle>
+        <InputToggle onClick={this.toggleSettings}>
+          <SettingsIcon />
+        </InputToggle>
         {this.state.open &&
           <InputContainer>
             <Input
