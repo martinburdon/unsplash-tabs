@@ -58,7 +58,7 @@ class App extends Component {
       } else {
         this.setState({ imageData: getFakeData() })
       }
-    })
+    });
   }
 
   onQueryChange = (query) => {
@@ -75,6 +75,7 @@ class App extends Component {
     return (
       <AppContainer>
         <Footer
+          getImage={this.getImage}
           onQueryChange={this.onQueryChange}
           query={this.state.query}
           user={user}

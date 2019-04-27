@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import SettingsIcon from './SettingsIcon.jsx';
+import RefreshIcon from './RefreshIcon.jsx';
 
 const SettingsContainer = styled.div`
   position: relative;
@@ -24,7 +25,7 @@ const InputToggle = styled.button`
   }
 `;
 
-const InputContainer = styled.div`
+const InputContainer = styled.form`
   position: absolute;
   right: 4rem;
   bottom: 0;
@@ -37,7 +38,7 @@ const Input = styled.input`
   color: #D8DEE9;
   font-size: 1.5rem;
   line-height: 1.1;
-  padding: 0.8rem;
+  padding: 0.8rem 3rem 0.8rem 0.8rem;
 
   &:focus {
     outline: none;
@@ -50,13 +51,18 @@ const Input = styled.input`
 
 class QuerySelector extends Component {
   state = {
-    open: false
+    open: true
   };
 
   toggleSettings = () => {
     this.setState({
       open: !this.state.open
     });
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.getImage();
   }
 
   render() {
@@ -66,7 +72,7 @@ class QuerySelector extends Component {
           <SettingsIcon />
         </InputToggle>
         {this.state.open &&
-          <InputContainer>
+          <InputContainer onSubmit={(e) => this.onSubmit(e)}>
             <Input
               id="querySelector"
               placeholder="Enter search term"
@@ -74,6 +80,7 @@ class QuerySelector extends Component {
               type="text"
               value={this.props.value}
             />
+            <RefreshIcon onClick={this.props.getImage} />
           </InputContainer>
         }
       </SettingsContainer>

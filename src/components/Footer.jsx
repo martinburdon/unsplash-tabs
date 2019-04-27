@@ -18,6 +18,7 @@ const Footer = styled.div`
 `;
 
 export default ({
+  getImage,
   onQueryChange,
   query,
   user
@@ -26,6 +27,7 @@ export default ({
     <Author {...user} />
     <UnsplashLogo />
     <QuerySelector
+      getImage={getImage}
       onChange={onQueryChange}
       value={query}
     />
