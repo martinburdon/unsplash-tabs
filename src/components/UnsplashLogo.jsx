@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Logo = styled.svg`
-  fill: #4C566A;
+  fill: #5b667b;
   height: 2rem;
   left: 50%;
   margin-left: -1rem;

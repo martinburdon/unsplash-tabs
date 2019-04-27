@@ -19,7 +19,7 @@ const InputToggle = styled.button`
 
   svg {
     display: block;
-    fill: #D8DEE9;
+    fill: #5b667b;
     height: 3rem;
     width: 3rem;
   }
