@@ -16,11 +16,11 @@ export default class Clock extends Component {
     clearInterval(this.interval);
   }
 
-  setupClock() {
+  setupClock = () => {
     this.interval = setInterval(() => this.updateTime(), 1000);
   }
 
-  updateTime() {
+  updateTime = () => {
     const now = new Date();
     const hour = this.formatNumber(now.getHours());
     const minutes = this.formatNumber(now.getMinutes());
@@ -28,20 +28,21 @@ export default class Clock extends Component {
     this.setState({ hour, minutes, seconds, isLoading: false });
   }
 
-  formatNumber(number) {
+  formatNumber = (number) => {
     return (`0${number}`).slice(-2);
   }
 
-  getClock() {
-    const { hour, minutes, seconds, isLoading } = this.state;
-    if (!isLoading) {
-      return <div>{hour}:{minutes}:{seconds}</div>;
-    }
-
-    return null;
-  }
-
+  // Render props example: https://levelup.gitconnected.com/understanding-react-render-props-by-example-71f2162fd0f2
   render() {
-    return this.getClock();
+    return (
+      <>
+        {this.props.render({
+          hour: this.state.hour,
+          minutes: this.state.minutes,
+          seconds: this.state.seconds,
+          isLoading: this.state.isLoading
+        })}
+      </>
+    )
   }
 }
