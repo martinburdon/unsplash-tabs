@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Unsplash, { toJson } from 'unsplash-js';
 import styled from 'styled-components';
 import { getFakeData } from './helpers.js';
+import DateTime from './components/DateTime.jsx';
 import Footer from './components/Footer.jsx';
 
 const AppContainer = styled.div`
@@ -74,6 +75,7 @@ class App extends Component {
 
     return (
       <AppContainer>
+        <DateTime />
         <Footer
           getImage={this.getImage}
           onQueryChange={this.onQueryChange}
