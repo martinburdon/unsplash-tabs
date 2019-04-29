@@ -23,6 +23,11 @@ const TimeText = styled.p`
   font-size: 1.6rem;
 `;
 
+const TimeTextEmpty = styled.p`
+  color: #2E3440;
+  font-size: 1.6rem;
+`;
+
 export default () => {
   return (
     <Container>
@@ -37,9 +42,10 @@ export default () => {
       )}/>
       <Clock render={({
         hour,
-        minutes
+        minutes,
+        isLoading
       }) => (
-        <TimeText>{`${hour}:${minutes}`}</TimeText>
+        isLoading ? <TimeTextEmpty>.</TimeTextEmpty> : <TimeText>{`${hour}:${minutes}`}</TimeText>
       )} />
     </Container>
   );
