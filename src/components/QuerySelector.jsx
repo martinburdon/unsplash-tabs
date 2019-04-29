@@ -51,7 +51,7 @@ const Input = styled.input`
 
 class QuerySelector extends Component {
   state = {
-    open: true
+    open: false
   };
 
   toggleSettings = () => {

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { getFakeData } from './helpers.js';
 import DateTime from './components/DateTime.jsx';
 import Footer from './components/Footer.jsx';
+import Loading from './components/Loading.jsx';
 
 const AppContainer = styled.div`
   align-items: center;
@@ -11,6 +12,12 @@ const AppContainer = styled.div`
   height: 100vh;
   justify-content: center;
   position: relative;
+`;
+
+const ImageLink = styled.a`
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
 `;
 
 const Image = styled.img`
@@ -69,9 +76,9 @@ class App extends Component {
 
   render() {
     const { imageData } = this.state;
-    if (!imageData) return 'Loading...';
+    if (!imageData) return <Loading />;
 
-    const { user } = imageData;
+    const { links, user } = imageData;
 
     return (
       <AppContainer>
@@ -82,10 +89,12 @@ class App extends Component {
           query={this.state.query}
           user={user}
         />
-        <Image
-          src={imageData.urls.regular}
-          alt={imageData.alt_description}
-        />
+        <ImageLink href={links.html} target="_blank">
+          <Image
+            src={imageData.urls.regular}
+            alt={imageData.alt_description}
+          />
+        </ImageLink>
       </AppContainer>
     );
   }
