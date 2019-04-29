@@ -46,11 +46,11 @@ export default ({
       <Avatar src={profile_image.small} />
     </Link>
     <InfoContainer>
-      <Link href={links.html}>
+      <Link href={`${links.html}?utm_source=New_Tab_Photos&utm_medium=referral`} target="_blank">
         <Name>{first_name}</Name>
       </Link>
       {instagram_username &&
-        <Link href={`https://instagram.com/${instagram_username}`}>
+        <Link href={`https://instagram.com/${instagram_username}`} target="_blank">
           <Instagram>@{instagram_username}</Instagram>
         </Link>
       }

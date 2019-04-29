@@ -89,7 +89,7 @@ class App extends Component {
           query={this.state.query}
           user={user}
         />
-        <ImageLink href={links.html} target="_blank">
+        <ImageLink href={`${links.html}?utm_source=New_Tab_Photos&utm_medium=referral`} target="_blank">
           <Image
             src={imageData.urls.regular}
             alt={imageData.alt_description}

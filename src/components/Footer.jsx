@@ -1,4 +1,5 @@
 import React from 'react';
+import UnsplashLogo from './UnsplashLogo.jsx';
 import QuerySelector from './QuerySelector.jsx';
 import Author from './Author.jsx';
 import styled from 'styled-components';
@@ -24,6 +25,7 @@ export default ({
 }) => (
   <Footer>
     <Author {...user} />
+    <UnsplashLogo />
     <QuerySelector
       getImage={getImage}
       onChange={onQueryChange}
